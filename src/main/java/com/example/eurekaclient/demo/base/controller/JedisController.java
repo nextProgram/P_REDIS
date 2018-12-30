@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,13 +37,13 @@ public class JedisController {
             @ApiImplicitParam(name = "paraValue", value = "value", required = true, dataType = "String")
     })
     @PostMapping(value = "/jedisForStringSet")
-    public ReturnVO<JedisReturnVO> jedisForStringSet(JedisRequestVO jedisRequestVO){
+    public ReturnVO<JedisReturnVO> jedisForStringSet(@RequestBody JedisRequestVO jedisRequestVO){
         logger.info("jedisForStringSet请求参数:key["+jedisRequestVO.getKey()+"],value["+jedisRequestVO.getValue()+"]");
         ReturnVO<JedisReturnVO> returnVO = new ReturnVO<>();
-        JedisReturnVO jedisReturnVO = jedisService.jedisForStringSet(jedisRequestVO.getKey(),jedisRequestVO.getValue());
+        //JedisReturnVO jedisReturnVO = jedisService.jedisForStringSet(jedisRequestVO.getKey(),jedisRequestVO.getValue());
         returnVO.setRetCode("1");
         returnVO.setRetMsg("Jedis新增key-value:成功");
-        returnVO.setRetData(jedisReturnVO);
+        //returnVO.setRetData(jedisReturnVO);
         return returnVO;
     }
 }
