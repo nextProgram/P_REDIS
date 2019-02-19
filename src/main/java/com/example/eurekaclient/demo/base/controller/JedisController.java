@@ -40,10 +40,10 @@ public class JedisController {
     public ReturnVO<JedisReturnVO> jedisForStringSet(@RequestBody JedisRequestVO jedisRequestVO){
         logger.info("jedisForStringSet请求参数:key["+jedisRequestVO.getKey()+"],value["+jedisRequestVO.getValue()+"]");
         ReturnVO<JedisReturnVO> returnVO = new ReturnVO<>();
-        //JedisReturnVO jedisReturnVO = jedisService.jedisForStringSet(jedisRequestVO.getKey(),jedisRequestVO.getValue());
+        JedisReturnVO jedisReturnVO = jedisService.jedisForStringSet(jedisRequestVO.getKey(),jedisRequestVO.getValue());
         returnVO.setRetCode("1");
         returnVO.setRetMsg("Jedis新增key-value:成功");
-        //returnVO.setRetData(jedisReturnVO);
+        returnVO.setRetData(jedisReturnVO);
         return returnVO;
     }
 }
